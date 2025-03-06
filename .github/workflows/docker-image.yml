@@ -6,22 +6,24 @@ on:
 
 
 # jobs:
-  build:
-    runs-on: ubuntu-latest
+  # build:
+  #   runs-on: ubuntu-latest
 
-    steps:
-    - uses: actions/checkout@v4
-    - name: login to docker 
-      run: sudo docker login -u ${{secrets.DOCKER_USERNAME}} -p ${{secrets.DOCKER_PASSWORD}}
+  #   steps:
+  #   - uses: actions/checkout@v4
+  #   - name: login to docker 
+      # run: sudo docker login -u 
+      # ${{secrets.DOCKER_USERNAME}} -p 
+      # ${{secrets.DOCKER_PASSWORD}}
 
-    - name: Build the Docker image
-      run: docker build -t kene38/aws-nodejs-app .
+  #   - name: Build the Docker image
+  #     run: docker build -t kene38/aws-nodejs-app .
 
-    - name: List Docker images
-      run: docker images
+  #   - name: List Docker images
+  #     run: docker images
 
-    - name: Push the docker image
-      run: docker push kene38/aws-nodejs-app
+  #   - name: Push the docker image
+  #     run: docker push kene38/aws-nodejs-app
       
 
 jobs:
