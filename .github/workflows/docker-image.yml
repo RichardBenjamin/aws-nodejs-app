@@ -33,7 +33,7 @@ jobs:
 
       - name: Login to Docker
         # run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
-        run:  sudo docker login -u ${{secrets.DOCKER_USERNAME}} -p ${{secrets.DOCKER_PASSWORD}}
+        run: docker login -u ${{secrets.DOCKER_USERNAME}} -p ${{secrets.DOCKER_PASSWORD}}
 
       - name: Build the Docker image
         run: docker build -t kene38/aws-nodejs-app .
@@ -42,4 +42,22 @@ jobs:
         run: docker images
 
       - name: Push the Docker image
-        run: sudo docker push kene38/aws-nodejs-app
+        run: docker push kene38/aws-nodejs-app
+
+
+  Deploy:
+    needs: build
+
+    runs-on: aws-ec2
+
+    steps:
+      - name: Pull the Docker Image
+        run: docker pull kene38/aws-nodejs-app
+
+      - name: Delete Old container 
+        run: docker rm -f Docker-Container 
+
+      - name: Run Docker Image 
+        run: docker run -d -p 5000:5000 --name Docker-Container kene38/aws-nodejs-app
+
+
