@@ -15,7 +15,7 @@ jobs:
       run: sudo docker login -u ${{secrets.DOCKER_USERNAME}} -p ${{secrets.DOCKER_PASSWORD}}
 
     - name: Build the Docker image
-      run: docker build -t aws-nodejs-app .
+      run: docker build -t kene38/aws-nodejs-app .
 
     - name: Push the docker image
       run: docker push kene38/aws-nodejs-app
