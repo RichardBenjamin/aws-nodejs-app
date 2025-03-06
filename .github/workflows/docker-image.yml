@@ -31,7 +31,7 @@ jobs:
 
     steps:
       - name: Pull the Docker Image
-        run: docker pull kene38/aws-nodejs-app
+        run: sudo docker pull kene38/aws-nodejs-app
 
       - name: Delete Old container 
         run: sudo docker rm -f Docker-Container 
