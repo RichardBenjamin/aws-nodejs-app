@@ -53,6 +53,7 @@ jobs:
     steps:
       - name: Pull the Docker Image
         run: sudo docker pull kene38/aws-nodejs-app:latest
+        # run: sudo docker pull kene38/cicd-pipeline1:latest
 
       - name: Delete Old container 
         run: sudo docker rm -f Docker-Container 
