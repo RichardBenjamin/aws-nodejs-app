@@ -18,5 +18,5 @@ jobs:
       run: docker build -t aws-nodejs-app .
 
     - name: Push the docker image
-      run: docker push kene38/aws-nodejs-app:tagname
+      run: docker push kene38/aws-nodejs-app
 
