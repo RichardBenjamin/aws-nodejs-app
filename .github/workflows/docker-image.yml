@@ -1,18 +1,22 @@
-name: Docker Image CI
+name: Docker Image CI.
 
 on:
   push:
     branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
+
 
 jobs:
-
   build:
-
     runs-on: ubuntu-latest
 
     steps:
     - uses: actions/checkout@v4
+    - name: login to docker 
+      run: sudo docker login -u ${{secrets.DOCKER_USERNAME}} -p ${{secrets.DOCKER_PASSWORD}}
+
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
+      run: docker build -t aws-nodejs-app .
+
+    - name: Push the docker image
+      run: docker push kene38/aws-nodejs-app:tagname
+
